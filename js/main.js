@@ -7,6 +7,7 @@
 
     // ---- COUNTDOWN ----
     const TARGET_DATE = new Date('2026-04-16T00:00:00+02:00');
+    const isAfterDate = () => new Date() >= TARGET_DATE;
 
     function updateCountdown() {
         const now = new Date();
@@ -44,6 +45,18 @@
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
+
+    // ---- CONGRATS BEFORE/AFTER TOGGLE ----
+    const congratsBefore = document.getElementById('congrats-before');
+    const congratsAfter = document.getElementById('congrats-after');
+
+    if (isAfterDate()) {
+        congratsBefore.classList.add('hidden');
+        congratsAfter.classList.remove('hidden');
+    } else {
+        congratsBefore.classList.remove('hidden');
+        congratsAfter.classList.add('hidden');
+    }
 
     // ---- FIRE PARTICLES (Canvas) ----
     const canvas = document.getElementById('hero-particles');
@@ -179,7 +192,7 @@
         });
     });
 
-    // ---- CONFETTI ----
+    // ---- CONFETTI (only after the date) ----
     const confettiCanvas = document.getElementById('confetti-canvas');
     const confettiCtx = confettiCanvas.getContext('2d');
     let confettiPieces = [];
@@ -244,86 +257,101 @@
         if (alive) requestAnimationFrame(animateConfetti);
     }
 
-    const congratsSection = document.getElementById('congrats');
-    const congratsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !confettiTriggered) {
-                confettiTriggered = true;
-                launchConfetti();
-            }
-        });
-    }, { threshold: 0.3 });
+    // Only trigger confetti after the date
+    if (isAfterDate()) {
+        const congratsSection = document.getElementById('congrats');
+        const congratsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !confettiTriggered) {
+                    confettiTriggered = true;
+                    launchConfetti();
+                }
+            });
+        }, { threshold: 0.3 });
 
-    congratsObserver.observe(congratsSection);
+        congratsObserver.observe(congratsSection);
+    }
     window.addEventListener('resize', resizeConfetti);
 
-    // ---- SIREN EASTER EGG ----
+    // ---- SIREN EASTER EGG (only after the date) ----
     const sirenBtn = document.getElementById('siren-btn');
-    let sirenPlaying = false;
-    let sirenOscillator = null;
-    let sirenGain = null;
-    let sirenCtx = null;
+    if (sirenBtn) {
+        let sirenPlaying = false;
+        let sirenOscillator = null;
+        let sirenGain = null;
+        let sirenAudioCtx = null;
 
-    sirenBtn.addEventListener('click', () => {
-        if (sirenPlaying) {
-            stopSiren();
-            return;
-        }
-        playSiren();
-    });
-
-    function playSiren() {
-        sirenCtx = new (window.AudioContext || window.webkitAudioContext)();
-        sirenOscillator = sirenCtx.createOscillator();
-        sirenGain = sirenCtx.createGain();
-        sirenOscillator.type = 'sawtooth';
-        sirenOscillator.frequency.setValueAtTime(600, sirenCtx.currentTime);
-        sirenGain.gain.setValueAtTime(0.15, sirenCtx.currentTime);
-
-        // Siren modulation
-        const duration = 3;
-        for (let t = 0; t < duration; t += 0.5) {
-            sirenOscillator.frequency.linearRampToValueAtTime(900, sirenCtx.currentTime + t + 0.25);
-            sirenOscillator.frequency.linearRampToValueAtTime(600, sirenCtx.currentTime + t + 0.5);
-        }
-        sirenGain.gain.linearRampToValueAtTime(0, sirenCtx.currentTime + duration);
-
-        sirenOscillator.connect(sirenGain);
-        sirenGain.connect(sirenCtx.destination);
-        sirenOscillator.start();
-        sirenPlaying = true;
-
-        sirenBtn.classList.add('active');
-
-        setTimeout(() => {
-            stopSiren();
-        }, duration * 1000);
-    }
-
-    function stopSiren() {
-        if (sirenOscillator) {
-            sirenOscillator.stop();
-            sirenOscillator.disconnect();
-        }
-        if (sirenCtx) sirenCtx.close();
-        sirenPlaying = false;
-        sirenBtn.classList.remove('active');
-    }
-
-    // ---- SHARE FUNCTIONS ----
-    document.getElementById('share-whatsapp').addEventListener('click', () => {
-        const text = '🔥 Cedric Dudel wird Feuerwehrmann! Schau dir diese Seite an: ';
-        const url = window.location.href;
-        window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`, '_blank');
-    });
-
-    document.getElementById('share-copy').addEventListener('click', () => {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            const feedback = document.getElementById('copy-feedback');
-            feedback.classList.remove('hidden');
-            setTimeout(() => feedback.classList.add('hidden'), 2500);
+        sirenBtn.addEventListener('click', () => {
+            if (sirenPlaying) {
+                stopSiren();
+                return;
+            }
+            playSiren();
         });
-    });
+
+        function playSiren() {
+            sirenAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            sirenOscillator = sirenAudioCtx.createOscillator();
+            sirenGain = sirenAudioCtx.createGain();
+            sirenOscillator.type = 'sawtooth';
+            sirenOscillator.frequency.setValueAtTime(600, sirenAudioCtx.currentTime);
+            sirenGain.gain.setValueAtTime(0.15, sirenAudioCtx.currentTime);
+
+            const duration = 3;
+            for (let t = 0; t < duration; t += 0.5) {
+                sirenOscillator.frequency.linearRampToValueAtTime(900, sirenAudioCtx.currentTime + t + 0.25);
+                sirenOscillator.frequency.linearRampToValueAtTime(600, sirenAudioCtx.currentTime + t + 0.5);
+            }
+            sirenGain.gain.linearRampToValueAtTime(0, sirenAudioCtx.currentTime + duration);
+
+            sirenOscillator.connect(sirenGain);
+            sirenGain.connect(sirenAudioCtx.destination);
+            sirenOscillator.start();
+            sirenPlaying = true;
+            sirenBtn.classList.add('active');
+
+            setTimeout(() => {
+                stopSiren();
+            }, duration * 1000);
+        }
+
+        function stopSiren() {
+            if (sirenOscillator) {
+                sirenOscillator.stop();
+                sirenOscillator.disconnect();
+            }
+            if (sirenAudioCtx) sirenAudioCtx.close();
+            sirenPlaying = false;
+            sirenBtn.classList.remove('active');
+        }
+    }
+
+    // ---- SHARE FUNCTIONS (works for both before & after) ----
+    function setupShare(whatsappId, copyId, feedbackId) {
+        const waBtn = document.getElementById(whatsappId);
+        const copyBtn = document.getElementById(copyId);
+        const feedback = document.getElementById(feedbackId);
+
+        if (waBtn) {
+            waBtn.addEventListener('click', () => {
+                const text = '🔥 Cedric Dudel wird Feuerwehrmann! Schau dir diese Seite an: ';
+                const url = window.location.href;
+                window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`, '_blank');
+            });
+        }
+        if (copyBtn && feedback) {
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    feedback.classList.remove('hidden');
+                    setTimeout(() => feedback.classList.add('hidden'), 2500);
+                });
+            });
+        }
+    }
+
+    // Setup for both before and after versions
+    setupShare('share-whatsapp-before', 'share-copy-before', 'copy-feedback-before');
+    setupShare('share-whatsapp', 'share-copy', 'copy-feedback');
 
     // ---- HERO ANIMATE-IN ----
     window.addEventListener('load', () => {
@@ -356,3 +384,4 @@
     });
 
 })();
+

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cedric Dudel — Feuerwehrmann Berlin 🔥</title>
+    <meta name="description" content="Am 16.04.2026 wird Cedric Dudel offiziell Feuerwehrmann in Berlin. Diese Seite ehrt seinen Weg zum Helden.">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Cedric Dudel wird Feuerwehrmann! 🔥">
+    <meta property="og:description" content="Am 16.04.2026 ist es soweit — Cedric Dudel wird offiziell Feuerwehrmann in Berlin!">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" id="floating-nav">
+        <a href="#hero" class="nav-dot active" data-label="Start" aria-label="Start"></a>
+        <a href="#about" class="nav-dot" data-label="Über Cedric" aria-label="Über Cedric"></a>
+        <a href="#timeline" class="nav-dot" data-label="Der Weg" aria-label="Der Weg"></a>
+        <a href="#funfacts" class="nav-dot" data-label="Fun Facts" aria-label="Fun Facts"></a>
+        <a href="#quote" class="nav-dot" data-label="Motivation" aria-label="Motivation"></a>
+        <a href="#congrats" class="nav-dot" data-label="Gratulation" aria-label="Gratulation"></a>
+    </nav>
+
+    <!-- ========== SECTION 1: HERO ========== -->
+    <section class="hero" id="hero">
+        <canvas class="hero-particles" id="hero-particles"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge animate-in">🔥 BERLINER FEUERWEHR 🔥</div>
+            <h1 class="hero-name animate-in">CEDRIC<br>DUDEL</h1>
+            <p class="hero-subtitle animate-in">Wird Feuerwehrmann · Berlin · 16.04.2026</p>
+            
+            <div class="countdown-container animate-in" id="countdown-container">
+                <div class="countdown-box">
+                    <span class="countdown-value" id="countdown-days">00</span>
+                    <span class="countdown-label">Tage</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="countdown-hours">00</span>
+                    <span class="countdown-label">Stunden</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="countdown-minutes">00</span>
+                    <span class="countdown-label">Minuten</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="countdown-seconds">00</span>
+                    <span class="countdown-label">Sekunden</span>
+                </div>
+            </div>
+
+            <!-- After the date -->
+            <div class="countdown-done hidden" id="countdown-done">
+                <span class="done-emoji">🚒</span>
+                <span class="done-text">ER IST FEUERWEHRMANN!</span>
+                <span class="done-emoji">🔥</span>
+            </div>
+
+            <a href="#about" class="scroll-indicator animate-in" aria-label="Nach unten scrollen">
+                <div class="scroll-arrow"></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 2: ABOUT ========== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title reveal">Der Mann hinter dem Helm</h2>
+            <p class="section-subtitle reveal">Wer ist der Typ, der ab jetzt Leben rettet?</p>
+            
+            <div class="about-grid">
+                <div class="about-card glass-card reveal">
+                    <div class="card-icon">👤</div>
+                    <h3>Steckbrief</h3>
+                    <ul class="steckbrief-list">
+                        <li><span class="label">Name:</span> <span class="value">Cedric Dudel</span></li>
+                        <li><span class="label">Alter:</span> <span class="value">24 Jahre</span></li>
+                        <li><span class="label">Standort:</span> <span class="value">Berlin</span></li>
+                        <li><span class="label">Beruf ab 16.04.:</span> <span class="value">Feuerwehrmann 🔥</span></li>
+                        <li><span class="label">Status:</span> <span class="value status-badge">Held</span></li>
+                    </ul>
+                </div>
+
+                <div class="about-card glass-card reveal">
+                    <div class="card-icon">💪</div>
+                    <h3>Eigenschaften</h3>
+                    <div class="stats">
+                        <div class="stat-bar">
+                            <div class="stat-info">
+                                <span>Mut</span><span>100%</span>
+                            </div>
+                            <div class="stat-track">
+                                <div class="stat-fill" data-width="100"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-info">
+                                <span>Teamgeist</span><span>100%</span>
+                            </div>
+                            <div class="stat-track">
+                                <div class="stat-fill" data-width="100"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-info">
+                                <span>Coolness unter Druck</span><span>100%</span>
+                            </div>
+                            <div class="stat-track">
+                                <div class="stat-fill" data-width="100"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-info">
+                                <span>Einsatzbereitschaft</span><span>100%</span>
+                            </div>
+                            <div class="stat-track">
+                                <div class="stat-fill" data-width="100"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-info">
+                                <span>Humor</span><span>110%</span>
+                            </div>
+                            <div class="stat-track">
+                                <div class="stat-fill" data-width="110"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-card glass-card reveal motto-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Sein Motto</h3>
+                    <blockquote class="motto-quote">
+                        „Wenn andere weglaufen, renne ich rein."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 3: TIMELINE ========== -->
+    <section class="section timeline-section" id="timeline">
+        <div class="container">
+            <h2 class="section-title reveal">Der Weg zum Feuerwehrmann</h2>
+            <p class="section-subtitle reveal">Jede Reise beginnt mit einem ersten Schritt</p>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item reveal" data-side="left">
+                    <div class="timeline-dot">
+                        <span>💭</span>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">Der Anfang</span>
+                        <h3>Die Entscheidung</h3>
+                        <p>Der Moment, in dem Cedric wusste: Ich will Menschen retten. Kein Bürojob, keine Langeweile — sondern echte Action.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal" data-side="right">
+                    <div class="timeline-dot">
+                        <span>📚</span>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">Ausbildungsstart</span>
+                        <h3>Die Ausbildung beginnt</h3>
+                        <p>Theorie, Praxis, Schweiß und Durchhaltevermögen. Cedric hat sich durch jede Prüfung gekämpft — und dabei nie den Humor verloren.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal" data-side="left">
+                    <div class="timeline-dot">
+                        <span>🔥</span>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">Praxisphase</span>
+                        <h3>Erste Übungseinsätze</h3>
+                        <p>Brandsimulationen, Rettungsübungen, Fahrzeugkunde — Cedric hat bewiesen, dass er unter Druck einen kühlen Kopf bewahrt.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal" data-side="right">
+                    <div class="timeline-dot highlight-dot">
+                        <span>⭐</span>
+                    </div>
+                    <div class="timeline-content glass-card highlight-card">
+                        <span class="timeline-date">16. April 2026</span>
+                        <h3>DER GROSSE TAG</h3>
+                        <p>Cedric Dudel wird offiziell Feuerwehrmann der Berliner Feuerwehr. Ein Held wird geboren. 🎉</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 4: FUN FACTS ========== -->
+    <section class="section funfacts" id="funfacts">
+        <div class="container">
+            <h2 class="section-title reveal">Was du über Cedric wissen solltest</h2>
+            <p class="section-subtitle reveal">Ein paar Fakten, die ihn einzigartig machen</p>
+            
+            <div class="facts-grid">
+                <div class="fact-card glass-card reveal">
+                    <div class="fact-icon">⏱️</div>
+                    <h3>Blitzschnell</h3>
+                    <p>Kann seine Einsatzausrüstung schneller anziehen als du deine Schuhe.</p>
+                </div>
+                <div class="fact-card glass-card reveal">
+                    <div class="fact-icon">💤</div>
+                    <h3>Immer bereit</h3>
+                    <p>Schläft ein wie ein Baby — und ist trotzdem in 30 Sekunden einsatzbereit.</p>
+                </div>
+                <div class="fact-card glass-card reveal">
+                    <div class="fact-icon">🍕</div>
+                    <h3>Wachen-Koch</h3>
+                    <p>Sein Chili con Carne auf der Wache ist legendär. Schärfer als jeder Einsatz.</p>
+                </div>
+                <div class="fact-card glass-card reveal">
+                    <div class="fact-icon">📺</div>
+                    <h3>Trainings-Freak</h3>
+                    <p>Hat mehr Übungsstunden als Netflix-Stunden. Und das will was heißen.</p>
+                </div>
+                <div class="fact-card glass-card reveal">
+                    <div class="fact-icon">🐱</div>
+                    <h3>Tierretter</h3>
+                    <p>Würde für eine Katze auf dem Baum den ganzen Einsatzplan umwerfen.</p>
+                </div>
+                <div class="fact-card glass-card reveal">
+                    <div class="fact-icon">🏋️</div>
+                    <h3>Stählerner Wille</h3>
+                    <p>Gibt niemals auf. Nicht beim Training, nicht beim Einsatz, nicht beim Tischkicker.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 5: QUOTE ========== -->
+    <section class="section quote-section" id="quote">
+        <div class="quote-parallax"></div>
+        <div class="quote-overlay"></div>
+        <div class="quote-content">
+            <div class="quote-mark reveal">❝</div>
+            <blockquote class="big-quote reveal">
+                Echte Helden tragen keine Capes — sie tragen Helme.
+            </blockquote>
+            <p class="quote-attribution reveal">— Für Cedric, der Berlin sicherer macht</p>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 6: CONGRATULATIONS ========== -->
+    <section class="section congrats" id="congrats">
+        <canvas class="confetti-canvas" id="confetti-canvas"></canvas>
+        <div class="container">
+            <div class="congrats-content">
+                <div class="congrats-emoji reveal">🚒</div>
+                <h2 class="congrats-title reveal">Willkommen bei der Feuerwehr, Cedric!</h2>
+                <p class="congrats-text reveal">
+                    Du hast es geschafft. Du hast gekämpft, geschwitzt, gelernt und nie aufgegeben.
+                    Ab jetzt bist du einer von denen, auf die Berlin sich verlässt.<br><br>
+                    <strong>Wir sind stolz auf dich. 🔥</strong>
+                </p>
+
+                <div class="siren-easter-egg reveal" id="siren-btn" title="Klick mich!">
+                    <span class="siren-icon">🚨</span>
+                    <span class="siren-text">Sirene aktivieren</span>
+                </div>
+
+                <div class="share-section reveal">
+                    <p class="share-label">Teile diese Seite mit Cedrics Kameraden:</p>
+                    <div class="share-buttons">
+                        <button class="share-btn whatsapp" id="share-whatsapp" aria-label="Via WhatsApp teilen">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp
+                        </button>
+                        <button class="share-btn copy-link" id="share-copy" aria-label="Link kopieren">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                            Link kopieren
+                        </button>
+                    </div>
+                    <div class="copy-feedback hidden" id="copy-feedback">✅ Link kopiert!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Mit 🔥 erstellt für Cedric Dudel — Berliner Feuerwehr 2026</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
